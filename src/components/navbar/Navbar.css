@@ -1,0 +1,139 @@
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 0px;
+}
+
+.navbar img{
+    height:50px;
+}
+
+.navbar ul{
+    margin-left:25px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:#595959;
+    font-size: 16px;
+    gap: 20px;
+}
+
+.navbar ul li{
+    list-style: none;
+    cursor: pointer;
+}
+
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap:40px;
+}
+
+.navbar .navbar-right i {
+    font-size: 20px;
+    color: #595959;
+    margin-right: 10px; 
+}
+
+.navbar-right .navbar-search-icon{
+    display: flex;
+    gap:15px;
+    cursor: pointer;
+}
+
+.navbar-right .navbar-search-icon button{
+    padding:3px 15px;
+    background-color: #d54545;
+    border:1px solid #d54545;
+    color:white;
+    border-radius: 15px;
+    cursor: pointer;
+    transition:0.3s;
+}
+
+.navbar-right .navbar-search-icon button:hover{
+    background-color:#893030;
+    border:1px solid #893030;
+    color:white;
+}
+
+.navbar .active{
+    padding-bottom:2px;
+    border-bottom:2px solid #d54545;
+    color: #d54545;
+}
+
+.navbar-search-icon{
+    position:relative;
+}
+
+.navbar-search-icon .dot{
+    position:absolute;
+    min-width: 8px;
+    min-height: 8px;
+    background: #d54545;
+    border-radius: 10px;
+    top:-8px;
+    left:15px;
+}
+
+@media (max-width:1050px){
+    .navbar .logo{
+        width:140px;
+    }
+    .navbar-menu{
+        gap:20px;
+        font-size:17px;
+    }
+    .navbar-right{
+        gap:30px;
+    }
+    .navbar-right img{
+        width:22px;
+    }
+    .navbar-right button{
+        padding:8px 25px;
+    }
+}
+
+@media (max-width:900px){
+    .navbar .logo{
+        width:120px;
+    }
+    .navbar-menu{
+        gap:15px;
+        font-size:16px;
+    }
+    .navbar-right{
+        gap:20px;
+    }
+    .navbar-right img{
+        width:20px;
+    }
+    .navbar-right button{
+        padding:7px 20px;
+        font-size:15px;
+    }
+}
+
+@media (max-width:790px){
+    .navbar .navbar-menu{
+        display:none;
+    }
+}
+
+@media (max-width:400px){
+    .navbar{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .navbar.logo{
+        width:100%;
+    }
+
+    .navbar .navbar-right{
+        padding-top:30px;
+    }
+}

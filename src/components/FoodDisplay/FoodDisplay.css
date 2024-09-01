@@ -1,0 +1,34 @@
+.food-display{
+    margin-top:10vh;
+    height:auto;
+}
+
+.food-display h2{
+    font-weight: 500;
+    font-size: max(1.5vw,24px);
+}
+
+.food-display .food-display-list{
+    display:grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    margin-top:30px;
+    gap:30px;
+    row-gap: 50px;
+}
+
+@media(max-width:640px){
+    .food-display .food-display-list{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width:400px){
+    .food-display h2{
+        font-size:14px;
+    }
+
+    .food-display .food-display-list{
+        display:flex;
+        flex-direction: column;
+    }
+}
