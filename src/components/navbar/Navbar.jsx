@@ -4,9 +4,10 @@ import { assets } from '../../assets/assets'
 import {Link} from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 
-const Navbar = ({setShowLogin}) => {
+const Navbar = ({setShowLogin,isLoggedIn}) => {
 
     const [menu,setMenu] = useState("home");
+    const [searchVisible,setSearchVisible] = useState(false);
 
     const {getTotalCartAmount} = useContext(StoreContext);
 
@@ -20,11 +21,17 @@ const Navbar = ({setShowLogin}) => {
         <a href='#footer' onClick={()=>setMenu("contato")}className={menu==="contato"?"active":""}>Contato</a>
       </ul>
       <div className="navbar-right">
-        <i class='bx bx-search-alt-2' ></i>
+        <i className='bx bx-search-alt-2' id='search-icon' onClick={()=> setSearchVisible(!searchVisible)}></i>
+        <div className={`search-menu ${searchVisible?'visible':''}`}><input type="text" placeholder='Digite o item para procurá-lo'/></div>
         <div className="navbar-search-icon">
-            <Link to='/cart'><i class='bx bx-shopping-bag' ></i></Link>
+            <Link to='/cart'><i className='bx bx-shopping-bag' ></i></Link>
             <div className={getTotalCartAmount()===0?"":"dot"}></div>
+            {console.log("Estado de isLoggedIn:", isLoggedIn)}
+            {isLoggedIn ?(
+              <i className='bx bx-user' ></i>
+            ):(
             <button onClick={()=>setShowLogin(true)}>Sign in</button>
+            )}
         </div>
       </div>
     </div>

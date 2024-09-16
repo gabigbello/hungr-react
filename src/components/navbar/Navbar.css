@@ -33,7 +33,11 @@
 .navbar .navbar-right i {
     font-size: 20px;
     color: #595959;
-    margin-right: 10px; 
+    cursor: pointer;
+}
+
+.navbar .navbar-right i #search-icon{
+    margin-right:0px;
 }
 
 .navbar-right .navbar-search-icon{
@@ -76,6 +80,28 @@
     border-radius: 10px;
     top:-8px;
     left:15px;
+}
+
+.navbar-right .search-menu{
+    display: none;
+}
+
+.navbar-right .search-menu.visible{
+    display:block;
+}
+
+.navbar-right .search-menu input{
+    display:block;
+    border:none;
+    border-bottom: 0.8px solid gainsboro;
+    width:15vw;
+    border-left:0;
+}
+
+.navbar-right .search-menu input.active:focus{
+    border-bottom: 0.8px solid gainsboro;
+    box-shadow: 0 0 0 0;
+    outline: 0;
 }
 
 @media (max-width:1050px){
