@@ -1,55 +1,57 @@
-<<<<<<< HEAD
-import React, { useContext } from 'react'
-import './FoodDisplay.css'
-import { StoreContext } from '../../context/StoreContext'
-import FoodItem from '../FoodItem/FoodItem'
+import React, { useContext, useState } from 'react';
+import './FoodDisplay.css';
+import { StoreContext } from '../../context/StoreContext';
+import FoodItem from '../FoodItem/FoodItem';
 
-const FoodDisplay = ({categoria}) => {
+const FoodDisplay = ({ categoria }) => {
+  const { food_list } = useContext(StoreContext);
+  const [searchVisible, setSearchVisible] = useState(false);
+  const [searchName, setSearchName] = useState("");  
 
-    const {food_list} = useContext(StoreContext)    
-
-  return (
-    <div className='food-display' id='food-display'>
-      <h2>Os melhores pratos para você</h2>
-      <div className='food-display-list'>
-        {food_list.map((item,index)=>{
-          {console.log(categoria,item.categoria);}
-          if(categoria==="All" || categoria===item.categoria){
-            return <FoodItem key={index} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image}/>
-          }
-
-        })}
-      </div>
-    </div>
-  )
-}
-
-export default FoodDisplay
-=======
-import React, { useContext } from 'react'
-import './FoodDisplay.css'
-import { StoreContext } from '../../context/StoreContext'
-import FoodItem from '../FoodItem/FoodItem'
-
-const FoodDisplay = ({categoria}) => {
-
-    const {food_list} = useContext(StoreContext)    
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      setSearchVisible(false);
+    }
+  };
 
   return (
     <div className='food-display' id='food-display'>
-      <h2>Os melhores pratos para você</h2>
+      <div className='search-food'>
+        <h2>Os melhores pratos para você</h2>
+        <div className="search-container">
+          <i className='bx bx-search-alt-2' id='search-icon' onClick={() => setSearchVisible(!searchVisible)}></i>
+          <div className={`search-menu ${searchVisible ? 'visible' : ''}`}>
+            <input
+              type="text"
+              placeholder='Digite o item para procurá-lo'
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <i class='bx bx-x' onClick={()=> setSearchName("")}></i>
+          </div>
+        </div>
+      </div>
       <div className='food-display-list'>
-        {food_list.map((item,index)=>{
-          {console.log(categoria,item.categoria);}
-          if(categoria==="All" || categoria===item.categoria){
-            return <FoodItem key={index} id={item._id} name={item.name} description={item.description} price={item.price} image={item.image}/>
-          }
-
-        })}
+        {food_list
+          .filter(item =>
+            (categoria === "All" || categoria === item.categoria) &&
+            item.name.toLowerCase().includes(searchName.toLowerCase())
+          )
+          .map((item, index) => (
+            <FoodItem
+              key={index}
+              id={item._id}
+              name={item.name}
+              description={item.description}
+              price={item.price}
+              image={item.image}
+            />
+          ))
+        }
       </div>
     </div>
-  )
+  );
 }
 
-export default FoodDisplay
->>>>>>> c0bebb376d5934a6a5b21a718cdfdd6a8349cff0
+export default FoodDisplay;

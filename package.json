@@ -7,13 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-<<<<<<< HEAD
     "preview": "vite preview",
-    "homepage": "https://gabigbello.github.io/project-react-hungr"
-
-=======
-    "preview": "vite preview"
->>>>>>> c0bebb376d5934a6a5b21a718cdfdd6a8349cff0
+    "homepage": "https://gabigbello.github.io/project-react-hungr",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "react": "^18.3.1",
